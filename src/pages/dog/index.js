@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useState, useRef } from 'react';
-import { Button, Box, Stack, Typography } from '@mui/material';
+import { Button, Box, Slide, Stack, Typography } from '@mui/material';
 import { MainLayout } from '../../components/main-layout';
 import { Texture } from 'pixi.js';
 import axios from 'axios';
@@ -78,13 +78,13 @@ const PixiPage = ()=>{
             playAnimation(digAni, spine, false);
             setTimeout(()=>{
                 playAnimation(defaultAnimation, spine, true);
-             }, 2000);
-            if ( Math.random() < 0.1) {
+             }, rdm<0.9?2000:2500);
+            if ( rdm >= 0.9) {
                 setTimeout(()=>{
                     setRewardArr(Array(won+1).fill().map((_, i) => i));
                     setWon(won+1);
                    
-                }, 2000);
+                }, 2500);
             }
         }
     }
@@ -115,7 +115,7 @@ const PixiPage = ()=>{
                         onLoaded={onLoaded}
                     /> }</Box>
                     {won && <>
-                        { rewardArr.map((val) => <img style={{width: '10%', position: 'absolute', top: '10%', left: 10*val + '%'}} src='/static/images/gem.png' alt='' />)}
+                        { rewardArr.map((val) => <Slide direction='down' in={won} timeout={500+200*val} ><img style={{width: '10%', position: 'absolute', top: '10%', left: 10*val + '%'}} src='/static/images/gem.png' alt='' /></Slide>)}
                     </>}
                 </Stack>   
                 <Stack alignItems='center'><Button onClick={onDigClicked} variant='contained' sx={{width: '40%', fontSize: '3rem', margin: '1rem', backgroundcolor: 'green', color: 'white'}}>DIG</Button></Stack>
