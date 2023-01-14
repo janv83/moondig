@@ -20,7 +20,7 @@ export const Logo = styled((props) => {
       }}
       {...props}
     >    
-      <img src={'/static/nft_sample_logo.png'} style={{ height: 100 }} alt='NFTsample.app' />
+      <img src={'/static/images/moondig2.png'} style={{ height: 100, borderRadius: '8px' }} alt='moondig.app' />
     </Box>
   );
 })``;
